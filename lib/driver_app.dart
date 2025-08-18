@@ -10,6 +10,11 @@ class DriverApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: SignInScreen(),
       theme: ThemeData(
+        textTheme: TextTheme(
+          titleLarge: TextStyle(fontSize: 24,fontWeight: FontWeight.w700,fontFamily: "Mulish"),
+          titleMedium: TextStyle(fontSize: 16,fontWeight: FontWeight.w600,fontFamily: "Mulish"),
+          titleSmall: TextStyle(fontSize: 14,fontWeight: FontWeight.w400,fontFamily: "Mulish",color: Colors.grey)
+        ),
         inputDecorationTheme: InputDecorationTheme(
           fillColor: Colors.white,
           filled: true,

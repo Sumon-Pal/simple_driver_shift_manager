@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:simple_driver_shift_manager/ui/screens/shift_planner_list_screen.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
@@ -23,76 +24,67 @@ class _SignInScreenState extends State<SignInScreen> {
           child: Form(
             key: _formKey,
             child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                SizedBox(height: 155),
-            Text(
-              "Sign In",
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.w700,
-                fontFamily: "Mulish",
-              ),
-            ),
-            SizedBox(height: 9),
-            Text(
-              "Please sign in to continue",
-              style: TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.w400,
-                fontFamily: "Mulish",
-              ),
-            ),
-            SizedBox(height: 32),
-            TextFormField(
-              controller: _emailTEController,
-              textInputAction: TextInputAction.next,
-              decoration: InputDecoration(labelText: "Email"),
-            ),
-            SizedBox(height: 26),
-            TextFormField(
-              controller: _passwordTEController,
-              textInputAction: TextInputAction.done,
-              decoration: InputDecoration(
-                labelText: "Password",
-                suffixIcon: IconButton(
-                    icon: Icon(
-                      _obscurePassword ? Icons.visibility_off : Icons
-                          .visibility,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                const SizedBox(height: 155),
+                Text("Sign In", style: Theme.of(context).textTheme.titleLarge),
+                const SizedBox(height: 9),
+                Text(
+                  "Please sign in to continue",
+                  style: Theme.of(context).textTheme.titleSmall,
+                ),
+                const SizedBox(height: 32),
+                TextFormField(
+                  controller: _emailTEController,
+                  textInputAction: TextInputAction.next,
+                  decoration: InputDecoration(labelText: "Email"),
+                ),
+                const SizedBox(height: 26),
+                TextFormField(
+                  controller: _passwordTEController,
+                  textInputAction: TextInputAction.done,
+                  decoration: InputDecoration(
+                    labelText: "Password",
+                    suffixIcon: IconButton(
+                      icon: Icon(
+                        _obscurePassword
+                            ? Icons.visibility_off
+                            : Icons.visibility,
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          _obscurePassword = !_obscurePassword;
+                        });
+                      },
                     ),
-                    onPressed: () {
-                      setState(() {
-                        _obscurePassword = !_obscurePassword;
-                      });
-                    }),
-              ),
-            ),
-              SizedBox(height: 28),
-              Row(
-                children: [
-                  Checkbox(
-                    value: _rememberMe,
-                    onChanged: (bool? value) {
-                      setState(() {
-                        _rememberMe = value ?? false;
-                      });
-                    },
-                  ),
-                  Text("Remember me"),
-                ],
-              ),
-              SizedBox(height: 24),
-              ElevatedButton(
-                onPressed: _onTapSignInButton,
-                child: Text(
-                  "Sign In",
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontFamily: "Mulish",
-                    fontWeight: FontWeight.w600,
                   ),
                 ),
-              ),
+                const SizedBox(height: 28),
+                Row(
+                  children: [
+                    Checkbox(
+                      value: _rememberMe,
+                      onChanged: (bool? value) {
+                        setState(() {
+                          _rememberMe = value ?? false;
+                        });
+                      },
+                    ),
+                    Text("Remember me"),
+                  ],
+                ),
+                const SizedBox(height: 24),
+                ElevatedButton(
+                  onPressed: _onTapSignInButton,
+                  child: Text(
+                    "Sign In",
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontFamily: "Mulish",
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
@@ -101,7 +93,10 @@ class _SignInScreenState extends State<SignInScreen> {
     );
   }
 
-  void _onTapSignInButton(){
-
+  void _onTapSignInButton() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => ShiftPlannerListScreen()),
+    );
   }
 }
