@@ -96,7 +96,7 @@ class _SignInScreenState extends State<SignInScreen> {
   void _onTapSignInButton() {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => ShiftPlannerListScreen()),
+      MaterialPageRoute(builder: (context) => ShiftPlannerListScreen())
     );
   }
 }
